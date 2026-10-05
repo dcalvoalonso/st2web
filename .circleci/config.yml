@@ -35,8 +35,8 @@ jobs:
             set +e
             export NVM_DIR="/opt/circleci/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-            nvm install 20.8.1
-            nvm alias default v20.8.1
+            nvm install 24.21.0
+            nvm alias default v24.21.0
 
             # Each step uses the same `$BASH_ENV`, so need to modify it
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
@@ -60,18 +60,18 @@ jobs:
             sudo apt-get update
             sudo apt-get install rpm jq devscripts debhelper
             gem install package_cloud
-            nvm use 20.8.1
+            nvm use 24.21.0
             npm install --global lerna@6.0.0 yarn
       - run:
           name: Install package dependencies
           command: |
-            nvm use 20.8.1
+            nvm use 24.21.0
             lerna bootstrap
 
       - run:
           name: Run unit tests
           command: |
-            nvm use 20.8.1
+            nvm use 24.21.0
             npm run test-unit
 
       - run:
@@ -130,7 +130,7 @@ jobs:
       - run:
           name: Make deb packages
           command: |
-            nvm use 20.8.1
+            nvm use 24.21.0
             make deb
             for i in $DEB
             do
@@ -139,7 +139,7 @@ jobs:
       - run:
           name: Make RPM packages
           command: |
-            nvm use 20.8.1
+            nvm use 24.21.0
             make rpm
             for i in $RPM
             do

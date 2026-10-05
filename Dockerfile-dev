@@ -1,4 +1,4 @@
-FROM node:20.8.1
+FROM node:24.21.0
 
 # Create app directory
 WORKDIR /opt/stackstorm/static/webui/st2web
