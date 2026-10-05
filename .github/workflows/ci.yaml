@@ -62,7 +62,10 @@ jobs:
           sleep 100
           docker compose -f ~/st2-docker/docker-compose.yml exec -T st2client st2 run core.noop
 
+      # zombie connects from 0.0.0.0 (IPv4) but Node resolves localhost to ::1 first.
       - name: Run functional tests
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
         run: npm run test-functional
 
       - name: Reset test containers
@@ -74,6 +77,8 @@ jobs:
           docker compose -f ~/st2-docker/docker-compose.yml exec -T st2client st2 execution list
 
       - name: Run tests on production version
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
         run: npm run test-production
 
       - name: Fetch container logs
@@ -118,7 +123,10 @@ jobs:
 
       - name: Check the nginx image
         if: startsWith(matrix.dockerfile, 'Dockerfile-nginx')
+        env:
+          # the web root in nginx.local.conf / nginx.local-dev.conf
+          WEBROOT: ${{ matrix.dockerfile == 'Dockerfile-nginx-dev' && '/opt/stackstorm/static/webui/st2web' || '/opt/stackstorm/static/webui' }}
         run: |
           docker run --rm st2web-test nginx -t
-          docker run --rm st2web-test test -f /opt/stackstorm/static/webui/index.html
+          docker run --rm st2web-test test -f "$WEBROOT/index.html"
           docker run --rm st2web-test sh -c 'apk info -v | grep -E "^(nginx|libexpat|pcre2|libuuid|zlib|libssl3)-[0-9]"; ! apk info -e libxml2'
