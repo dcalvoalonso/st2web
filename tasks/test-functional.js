@@ -40,6 +40,7 @@ gulp.task('test-functional', gulp.series([ 'build' ], (done) => {
       reporter: 'spec',
       require: [
         '@babel/register',
+        './tests/node-compat.js',
       ],
     }))
     .on('end', () => {

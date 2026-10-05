@@ -40,6 +40,7 @@ gulp.task('test-production', gulp.series([ 'production' ], (done) => {
       reporter: 'dot',
       require: [
         '@babel/register',
+        './tests/node-compat.js',
       ],
     }))
     .on('end', () => {
