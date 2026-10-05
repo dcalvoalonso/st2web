@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@stackstorm/module-auto-form": "2.4.5",
-    "@stackstorm/module-forms": "2.0.0",
+    "@stackstorm/module-forms": "^2.4.3",
     "@stackstorm/st2flow-editor": "1.0.0",
     "classnames": "^2.2.6",
     "insert-css": "2.0.0"

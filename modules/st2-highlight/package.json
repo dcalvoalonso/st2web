@@ -68,7 +68,7 @@
   "dependencies": {
     "@stackstorm/module-router": "^2.4.3",
     "classnames": "^2.2.6",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.30.0",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6"

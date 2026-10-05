@@ -9,21 +9,21 @@ StackStorm Web UI
 Quick start
 -----------
 
-First of all, you need to make sure you have `node` and `npm` packages installed. Currently, we consider Node v14.x.x to be our stable.
+First of all, you need to make sure you have `node` and `npm` packages installed. Currently, we consider Node v24.x.x to be our stable.
 
 ```shell
-$ n 20
-  installing : node-v20.8.1
-       mkdir : /home/enykeev/n/n/versions/node/20.8.1
-       fetch : https://nodejs.org/dist/v20.8.1/node-v20.8.1-linux-x64.tar.xz
-     copying : node/20.8.1
-   installed : v20.8.1 (with npm 10.1.0)
+$ n 24
+  installing : node-v24.21.0
+       mkdir : /home/enykeev/n/n/versions/node/24.21.0
+       fetch : https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-x64.tar.xz
+     copying : node/24.21.0
+   installed : v24.21.0 (with npm 11.19.0)
 
 $ node -v
-v20.8.1
+v24.21.0
 
 $ npm -v
-10.1.0
+11.19.0
 ```
 
 then you need to globally install `gulp`, `lerna` and `yarn`
